@@ -17,33 +17,40 @@ export function GameScreen({
   onReset,
 }: GameScreenProps) {
   return (
-    <div className="flex flex-col min-h-full bg-gray-50">
-      {/* Header */}
-      <header className="flex items-center justify-between p-3 bg-white border-b border-gray-200">
-        <button
-          onClick={onReset}
-          className="text-gray-500 text-sm px-3 py-1.5 rounded active:bg-gray-100"
-        >
-          ← Back
-        </button>
-        <h1 className="font-bold text-gray-900">Soc Ops</h1>
-        <div className="w-16"></div>
+    <div className="flex flex-col min-h-full bg-gradient-to-b from-cream via-cream-light to-cream">
+      {/* Atmospheric header */}
+      <header className="bg-gradient-to-r from-brown to-warm-brown text-cream shadow-lg relative overflow-hidden">
+        {/* Coffee stain decorative element */}
+        <div className="absolute inset-0 opacity-10 bg-radial-gradient from-dark-brown to-transparent" />
+        
+        <div className="flex items-center justify-between p-4 relative z-10">
+          <button
+            onClick={onReset}
+            className="text-cream hover:bg-warm-brown transition-colors px-4 py-2 rounded-lg font-semibold text-sm"
+          >
+            ← Back
+          </button>
+          <h1 className="font-serif text-2xl text-cream font-bold">Soc Ops Café</h1>
+          <div className="w-20 text-right">
+            <span className="text-2xl">☕</span>
+          </div>
+        </div>
       </header>
 
       {/* Instructions */}
-      <p className="text-center text-gray-500 text-sm py-2 px-4">
-        Tap a square when you find someone who matches it.
+      <p className="text-center text-warm-brown text-sm py-3 px-4 font-medium">
+        Find & tap squares when you find someone who matches ☕
       </p>
 
-      {/* Bingo indicator */}
+      {/* Bingo celebration banner */}
       {hasBingo && (
-        <div className="bg-amber-100 text-amber-800 text-center py-2 font-semibold text-sm">
-          🎉 BINGO! You got a line!
+        <div className="bg-gradient-to-r from-warm-gold via-gold to-warm-gold text-dark-brown text-center py-3 font-serif font-bold text-lg shadow-md animate-pulse">
+          ✨ BINGO! Golden match! ✨
         </div>
       )}
 
       {/* Board */}
-      <div className="flex-1 flex items-center justify-center p-3">
+      <div className="flex-1 flex items-center justify-center p-4">
         <BingoBoard
           board={board}
           winningSquareIds={winningSquareIds}

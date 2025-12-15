@@ -4,25 +4,46 @@ interface StartScreenProps {
 
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-6 bg-gray-50">
-      <div className="text-center max-w-sm">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Soc Ops</h1>
-        <p className="text-lg text-gray-600 mb-8">Social Bingo</p>
+    <div className="flex flex-col items-center justify-center min-h-full p-6 bg-gradient-to-b from-cream via-cream-light to-cream relative overflow-hidden">
+      {/* Decorative coffee elements */}
+      <div className="absolute top-10 left-10 text-6xl opacity-20 select-none pointer-events-none">☕</div>
+      <div className="absolute bottom-20 right-10 text-5xl opacity-15 select-none pointer-events-none">☕</div>
+      
+      <div className="text-center max-w-sm relative z-10">
+        {/* Coffee shop welcome */}
+        <div className="mb-8">
+          <h1 className="text-6xl font-bold text-dark-brown mb-2" style={{ fontFamily: 'Georgia, Garamond, serif' }}>
+            Soc Ops
+          </h1>
+          <p className="text-xl text-warm-brown font-light tracking-wide">Social Bingo Café</p>
+          <p className="text-sm text-warm-gold mt-2">Your cozy place to connect ☕</p>
+        </div>
         
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-8">
-          <h2 className="font-semibold text-gray-800 mb-3">How to play</h2>
-          <ul className="text-left text-gray-600 text-sm space-y-2">
-            <li>• Find people who match the questions</li>
-            <li>• Tap a square when you find a match</li>
-            <li>• Get 5 in a row to win!</li>
+        {/* How to play card */}
+        <div className="cozy-card p-8 mb-8 backdrop-blur-sm">
+          <h2 className="font-serif text-2xl text-dark-brown mb-4">How to Play</h2>
+          <ul className="text-left text-warm-brown text-sm space-y-3">
+            <li className="flex items-start">
+              <span className="inline-block w-6 text-gold mr-3 font-bold">☕</span>
+              <span>Find people who match the questions</span>
+            </li>
+            <li className="flex items-start">
+              <span className="inline-block w-6 text-gold mr-3 font-bold">☕</span>
+              <span>Tap a square when you find a match</span>
+            </li>
+            <li className="flex items-start">
+              <span className="inline-block w-6 text-gold mr-3 font-bold">☕</span>
+              <span>Get 5 in a row to win!</span>
+            </li>
           </ul>
         </div>
 
+        {/* Start button */}
         <button
           onClick={onStart}
-          className="w-full bg-accent text-white font-semibold py-4 px-8 rounded-lg text-lg active:bg-accent-light transition-colors"
+          className="w-full cozy-button py-4 px-8 rounded-lg text-lg font-semibold"
         >
-          Start Game
+          Start Game ☕
         </button>
       </div>
     </div>

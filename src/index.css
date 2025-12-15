@@ -1,11 +1,19 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
-  --color-bingo: #fbbf24;
+  /* Cozy Coffee Shop Palette */
+  --color-dark-brown: #6B4423;
+  --color-brown: #8B4513;
+  --color-warm-brown: #A0522D;
+  --color-cream: #FFF8F0;
+  --color-cream-light: #FAF6F1;
+  --color-gold: #D4AF37;
+  --color-warm-gold: #C9A961;
+  --color-accent: #8B4513;
+  --color-accent-light: #A0522D;
+  --color-marked: #FFF8F0;
+  --color-marked-border: #D4AF37;
+  --color-bingo: #D4AF37;
 }
 
 html,
@@ -16,6 +24,166 @@ body,
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-tap-highlight-color: transparent;
+  background-color: #FFF8F0;
+}
+
+/* Coffee shop atmospheric background with subtle texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.02) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(212, 175, 55, 0.01) 35px,
+      rgba(212, 175, 55, 0.01) 70px
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', 'Garamond', serif;
+  color: #6B4423;
+  font-weight: 600;
+}
+
+/* Cozy card styling */
+.cozy-card {
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF8F0 100%);
+  border: 2px solid #D4AF37;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(107, 68, 35, 0.08);
+  transition: all 0.3s ease;
+}
+
+.cozy-card:hover {
+  box-shadow: 0 6px 16px rgba(107, 68, 35, 0.12);
+  border-color: #C9A961;
+  transform: translateY(-2px);
+}
+
+/* Coffee cup square base styling */
+.coffee-square {
+  position: relative;
+  background: linear-gradient(135deg, #FFFBF7 0%, #FAF6F1 100%);
+  border: 2px solid #D4AF37;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(212, 175, 55, 0.1);
+}
+
+.coffee-square::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.coffee-square:active {
+  transform: scale(0.98);
+}
+
+/* Marked state with warm coffee aesthetic */
+.coffee-square.marked {
+  background: linear-gradient(135deg, #F5E6D3 0%, #EDD9C3 100%);
+  border-color: #D4AF37;
+  box-shadow: 
+    inset 0 1px 3px rgba(212, 175, 55, 0.2),
+    0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.coffee-square.marked::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20%, 20%);
+  }
+}
+
+/* Winning state - golden celebration */
+.coffee-square.winning {
+  background: linear-gradient(135deg, #FFE8A8 0%, #FFD966 100%);
+  border-color: #D4AF37;
+  box-shadow: 
+    inset 0 1px 3px rgba(212, 175, 55, 0.3),
+    0 0 12px rgba(212, 175, 55, 0.5);
+  animation: pulse-gold 0.6s ease-out;
+}
+
+@keyframes pulse-gold {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  }
+}
+
+/* Button styling */
+button {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.cozy-button {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #FFF8F0;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(107, 68, 35, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cozy-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #A0522D 0%, #8B4513 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(107, 68, 35, 0.3);
+}
+
+.cozy-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(107, 68, 35, 0.2);
+}
+
+.cozy-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
